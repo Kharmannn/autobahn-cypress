@@ -61,6 +61,10 @@ class SignupPage {
     cy.checkIfElementDisabled(this.btnSignup);
   };
 
+  checkButtonStartUsingDisabled() {
+    cy.checkIfElementDisabled(this.btnStartUsingAutobahn);
+  };
+
   checkIfRuleDisabled(rule) {
     cy.checkIfElementDisabled(cy.contains(this.listRequiredRules, rule))
   };
