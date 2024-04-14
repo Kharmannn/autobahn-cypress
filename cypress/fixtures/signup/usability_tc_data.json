@@ -1,0 +1,15 @@
+{
+    "TC13": {
+      "email": "valid_email@example.com",
+      "password": "PasswordVisibility!23"
+    },
+    "TC14": {
+      "email": "valid_email@example.com",
+      "password": "abc"
+    },
+    "TC15": {
+      "email": "valid_email@example.com",
+      "password": "GalaxyTraverse!8"
+    }
+  }
+  
