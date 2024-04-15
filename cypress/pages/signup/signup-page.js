@@ -36,6 +36,10 @@ class SignupPage {
     cy.get(this.modalSignup).should('be.visible');
   }
 
+  /**
+   * @param {string} email user email
+   * @param {string} password user password
+   */
   fillSignUpFields(email, password) {
 
     cy.get(this.inputEmail).type(email);
@@ -65,13 +69,13 @@ class SignupPage {
     cy.checkIfElementDisabled(this.btnStartUsingAutobahn);
   };
 
+  /**
+   * @param {string} rule Types of rules that wanted to be validated. E.g One lowercase letter
+   */
   checkIfRuleDisabled(rule) {
     cy.checkIfElementDisabled(cy.contains(this.listRequiredRules, rule))
   };
 
-  /**
-   * @param {string} type Types of field name for the error field. e/g password (for password field)
-   */
   checkErrorLabelVisibility() {
     cy.get(this.txtErrorLabel)
       .should('be.visible')
@@ -86,7 +90,7 @@ class SignupPage {
   }
 
   /**
-   * @param {string} industry Types of industry from the dropdown
+   * @param {string} industry Types of industry from the dropdown. E.g Insurance or Banking
    */
   selectDropdownIndustryOptions(industry) {
     cy.get(this.dropdownIndustry).click();
