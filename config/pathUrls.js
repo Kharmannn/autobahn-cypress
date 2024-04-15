@@ -20,7 +20,10 @@ if (configEnv === 'staging') {
 
 const pathUrls = {
 
-    "signup" : `${baseUrl}${'/signup'}`
+    "signup" : `${baseUrl}${'/signup'}`,
+    "apiVerifyDomain" : `${baseUrl}${'/api/verify_domain'}`,
+    "apiCheckuserAccount" : `${baseUrl}${'/api/check_user_account'}`
+    
 }
 
 module.exports = pathUrls;

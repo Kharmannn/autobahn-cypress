@@ -45,3 +45,12 @@ Cypress.Commands.add('checkIfElementDisabled', (selector) => {
         expect($el.hasClass('disabled') || !$el.hasClass('active')).to.be.true;
   });
 });
+
+Cypress.Commands.add('apiGet', (url, queryParams, headers) => {
+  cy.request({
+    method: 'GET',
+    url: url,
+    qs: queryParams,
+    headers: headers
+  });
+});
