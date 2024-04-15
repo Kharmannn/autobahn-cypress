@@ -18,6 +18,13 @@
      - **Password Example**: `Cosmic Dust123!`
    - TC8: Attempt to sign up with an already registered email from https://mail.tm.
      - **Password Example**: `QuantumLeap!2024`
+   - TC9: Cannot click startUsingAutobahn if the firstname not complete, other field already complete
+     - **Password Example**: `QuantumLeap!2024`
+   - TC10: Cannot click startUsingAutobahn if the lastname not complete, other field already complete
+   - TC16: Cannot click startUsingAutobahn if the phone number not complete, other field already complete
+   - TC17: Error should show if firstname able to input number value 
+   - TC18: Error should show if lastname able to input number value
+   - TC20: Email not using the gmail (corporate email)
 
 3. **Boundary Test Cases:**
    - TC11: Sign up with a password that is just below the maximum allowed length (if there's a maximum set).

@@ -73,7 +73,7 @@ context('Negative Cases', () => {
     });
   });
 
-  it(' TC8: Attempt to sign up with an already registered email from https://mail.tm.', () => {
+  it('TC8: Attempt to sign up with an already registered email from https://mail.tm.', () => {
     cy.fixture('signup/negative_tc_data.json').then((data) => {
       const { TC8 } = data;
       const { email, password} = TC8;
@@ -81,6 +81,93 @@ context('Negative Cases', () => {
       SignupPage.fillSignUpFields(email, password)
       SignupPage.checkPasswordStrength('Very Strong');
       SignupPage.checkButtonSignUpDisabled();
+    });
+  });
+
+  //
+  it('TC9: Cannot click startUsingAutobahn if the firstname not complete, other field already complete', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC8 } = data;
+      const { email, password, firstName, lastName } = TC8;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      cy.get(SignupPage.inputFirstName).click().type(firstName);
+      SignupPage.selectDropdownIndustryOptions('Insurance');
+      SignupPage.selectDropdownNationPhoneNumber('Indonesia', '812999888');
+      SignupPage.checkButtonStartUsingDisabled();
+    });
+  });
+
+  it('TC10: Cannot click startUsingAutobahn if the lastname not complete, other field already complete', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC8 } = data;
+      const { email, password, firstName, lastName } = TC8;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      cy.get(SignupPage.inputLastName).click().type(firstName);
+      SignupPage.selectDropdownIndustryOptions('Insurance');
+      SignupPage.selectDropdownNationPhoneNumber('Indonesia', '812999888');
+      SignupPage.checkButtonStartUsingDisabled();
+    });
+  });
+
+  it('TC16: Cannot click startUsingAutobahn if the phone number not complete, other field already complete', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC8 } = data;
+      const { email, password, firstName, lastName } = TC8;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      SignupPage.fillFirstNameLastName(firstName, lastName);
+      SignupPage.selectDropdownIndustryOptions('Insurance');
+      SignupPage.checkButtonStartUsingDisabled();
+    });
+  });
+
+  it('TC17: Error should show if firstname able to input number value', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC8 } = data;
+      const { email, password, firstName, lastName } = TC8;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      SignupPage.fillFirstNameLastName(`${firstName}123`, lastName);
+      SignupPage.checkErrorLabelVisibility();
+      SignupPage.selectDropdownIndustryOptions('Insurance');
+      SignupPage.checkButtonStartUsingDisabled();
+    });
+  });
+
+  it('TC18: Error should show if lastname able to input number value', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC8 } = data;
+      const { email, password, firstName, lastName } = TC8;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      SignupPage.fillFirstNameLastName(firstName, `${lastName}123`);
+      SignupPage.checkErrorLabelVisibility();
+      SignupPage.selectDropdownIndustryOptions('Insurance');
+      SignupPage.checkButtonStartUsingDisabled();
+    });
+  });
+
+  it('TC20: Email not using the gmail (corporate email)', () => {
+    cy.fixture('signup/negative_tc_data.json').then((data) => {
+      const { TC20 } = data;
+      const { email, password, firstName, lastName } = TC20;
+
+      SignupPage.fillSignUpFields(email, password)
+      SignupPage.checkPasswordStrength('Very Strong');
+      SignupPage.clickIfSignUpButtonIsEnable();
+      SignupPage.checkErrorLabelVisibility();
     });
   });
 });

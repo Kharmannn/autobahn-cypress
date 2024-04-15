@@ -25,6 +25,14 @@
   },
   "TC8": {
     "email": "akram-atbh1@awgarstone.com",
-    "password": "QuantumLeap!2024"
+    "password": "QuantumLeap!2024",
+    "firstName": "Akram",
+    "lastName": "Tc Delapan"
+  },
+  "TC20": {
+    "email": "akram-atbh20@gmail.com",
+    "password": "QuantumLeap!2024",
+    "firstName": "Akram",
+    "lastName": "Tc Duapuluh"
   }
 }
